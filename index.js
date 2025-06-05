@@ -41,7 +41,14 @@ app.post("/post", (req, res) => {
     }
     res.redirect("/");
   });
-  
+
+  app.post("/delete/:id", (req, res) => {
+    const postId = parseInt(req.params.id);
+    if (posts[postId]) {
+        posts.splice(postId, 1);
+    }
+    res.redirect("/");
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

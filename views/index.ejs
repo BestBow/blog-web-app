@@ -27,6 +27,9 @@
               <a href="/edit/<%= index %>">
                 <button type="button">Edit</button>
               </a>
+              <form action="/delete/<%= index %>" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
             </div>
           <% }); %>
       <% } %>
