@@ -23,6 +23,26 @@ app.post("/post", (req, res) => {
     res.redirect("/");
   });
 
+  app.get("/edit/:id", (req, res) => {
+    const postId = parseInt(req.params.id);
+    const post = posts[postId];
+    if (post) {
+      res.render("edit-form.ejs", { post, id: postId });
+    } else {
+      res.status(404).send("Post not found");
+    }
+  });
+
+  app.post("/edit/:id", (req, res) => {
+    const postId = parseInt(req.params.id);
+    if (posts[postId]) {
+      posts[postId].title = req.body.title;
+      posts[postId].content = req.body.content;
+    }
+    res.redirect("/");
+  });
+  
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
