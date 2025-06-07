@@ -8,7 +8,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-const posts = [];
+const posts = [
+    { title: "Test Post 1", content: "This is the first test post." },
+    { title: "Test Post 2", content: "This is the second test post." }
+  ];
 
 app.get("/", (req, res) => {
     res.render("index.ejs", { blogPosts: posts });
